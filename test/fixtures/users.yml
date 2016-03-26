@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  name: "Bruno"
+  id: 1
+  latitude: 50.90961
+  longitude: -114.08423
+two:
+  name: "Chris"
+  id: 2
+  latitude: 51.04862
+  longitude: -114.07085
+three:
+  name: "Adam"
+  id: 3
+  latitude: 51.04862
+  longitude: -115

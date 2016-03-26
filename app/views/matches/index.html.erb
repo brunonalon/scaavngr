@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Mailbox / Matches</title>
+
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $(".tab2").addClass('is-active');
+  });
+  </script>
+
+</head>
+
+<body>
+
+  <section>
+    <div class="container">
+      <h2 class="subtitle is-2"><i class="fa fa-users"></i> Matches</h2>
+      <div class="columns">
+        <div class="column">
+          <% @items.each do |item| %>
+          <h2 style="margin-top: 30px" class="subtitle is-4"><i class="fa fa-user-plus"></i> <%=item.name%></h2>
+
+          <h2 style="margin-bottom: 10px" <i class="image is-128x128"> <img src="<%=item.picture_url.thumb.url %>"></i></span></h2>
+          <%matches = item.get_all_item_matches%>
+          <%matches.each do |match|%>
+          <%user = User.find(match.user_id) %>
+          <!-- <div class="notification is-primary">
+          <div class="media">
+          <div class="media-left">
+          <img class="image is-64x64" src='<%=match.url%>' alt="Image">
+        </div>
+        <div class="media-left">
+        <p>
+        <strong><%= user.name %></strong>
+        <br>
+        <%=match.name%>
+      </p>
+      <!-- </div>
+      <div class="media-left"> -->
+      <!-- <%= link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' do %> -->
+      <!-- <span class="icon is-medium"><i class="fa fa-envelope"></i></span>
+      <% end %>
+    </a>
+  </div>
+</div>
+</div> -->
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img class="image is-64x64" src='<%=match.picture_url%>' alt="Image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <img src="<%= user.picture_profile_url%>" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-5"><strong><%= user.name %></strong></p>
+        <p class="subtitle is-6"><strong><%= match.name %></strong></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <strong><%= match.description %></strong>
+      <br>
+      <small>11:09 PM - 1 Jan 2016</small>
+    </div><div class="media-left">
+    <%= link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' do %>
+    <span class="icon is-medium"><i class="fa fa-envelope"></i></span>
+    <% end %>
+  </a>
+</div>
+  </div>
+</div>
+<% end %>
+<% end %>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+
+</body>

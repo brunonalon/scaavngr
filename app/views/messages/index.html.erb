@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Messages :3</title>
+
+</head>
+<body>
+<% if @over_ten %>
+<%= link_to 'Show Previous', '?m=all' %>
+<% end %>
+​  <div class="container">
+  <h2 class="subtitle is-2"><i class="fa fa-comments-o"></i> Conversation</h2>
+
+  <div class="columns">
+    <div class="column">
+      <div class="ui segment">
+        <% @messages.each do |message| %>
+        <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <div class="item">
+          <div class="content">
+            <div class="header"><strong><%= user.name %><strong></strong><small> <%= distance_of_time_in_words(Time.now - message.created_at) + " ago" %></small></div>
+            <div class="list">
+              <div class="item">
+                <i class="right triangle icon"></i>
+                <%= message.body %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+ <div class="container">
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src= "<%=current_user.picture_profile_url%>">
+    </p>
+  </figure>
+  <div class="media-content">
+    <p class="control">
+      <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+      <div class="field">
+        <%= f.text_area :body, class: "textarea", :placeholder => "Send a message..." %>
+      </div>
+    </p>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %></br>
+    <div class="navbar-item">
+      <%= f.submit "Send Message", class: "button is-info" %>
+    </div>
+  </div>
+  </article>
+</div>
+
+  <% end %>
+</body>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Mailbox / Matches</title>
+
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $(".tab3").addClass('is-active');
+  });
+  </script>
+
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="subtitle is-2"><i class="fa fa-envelope"></i> Messages</h2>
+    <div class="columns">
+      <div class="column">
+          <!-- <section>
+    <div class="container">
+      <h1 class="title">On-Going Conversations</h1>
+      <div class="columns">
+        <div class="column">
+          <% @conversations.each do |conversation| %>
+          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+          <div class="notification is-info">
+            <% recipient = User.find(conversation.recipient_id) %>
+            <%= link_to recipient.name, conversation_messages_path(conversation)%>
+          </div>
+          <% else %>
+          <div class="notification is-info">
+            <% recipient = User.find(conversation.sender_id) %>
+            <%= link_to recipient.name, conversation_messages_path(conversation)%>
+          </div>
+          <% end %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<section>
+<% @conversations.each do |conversation| %>
+<% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+<% recipient = User.find(conversation.recipient_id) %>
+<% sender = User.find(conversation.sender_id) %>
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <% if conversation.sender_id == current_user.id %>
+        <% pic = recipient.picture_profile_url%>
+        <% messagelink = recipient.name%>
+        <% else %>
+        <% pic = sender.picture_profile_url%>
+        <% messagelink = sender.name%>
+        <% end %>
+        <img src= "<%=pic%>" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= link_to messagelink, conversation_messages_path(conversation)%></strong> <small><%=distance_of_time_in_words(Time.now - conversation.messages.last.created_at) + " ago" %></small>
+          <br>
+            <%if conversation.messages.last%>
+            <%if conversation.messages.last.user_id == current_user.id%>
+            <%="You sent: " + conversation.messages.last.body%>
+            <%else%>
+            <%="They sent: " + conversation.messages.last.body%>
+            <%end%>
+
+        </p>
+      </div>
+      <nav class="navbar">
+        <div class="navbar-left">
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+<!-- <% else %>
+<% recipient = User.find(conversation.sender_id) %>
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="http://placehold.it/128x128" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= link_to recipient.name, conversation_messages_path(conversation)%></strong> <small>@johnsmith</small> <small>31m</small>
+
+          <br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+        </p>
+      </div>
+      <nav class="navbar">
+        <div class="navbar-left">
+          <a class="navbar-item">
+            <span class="icon is-small"><i class="fa fa-reply"></i></span>
+          </a>
+          <a class="navbar-item">
+            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+          </a>
+          <a class="navbar-item">
+            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+<% end %> -->
+<% end %>
+<% end %>
+
+<section>
+</div>
+</div>
+</div>
+</body>

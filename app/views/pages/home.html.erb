@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <title>Geolocation</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #map {
+    height: 50%;
+  }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div>
+    <h1>LOCATION WORKS!</h1>
+    
+  </div>
+
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+<fb:logout-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:logout-button>
+
+<div id="status">
+</div>
+<div
+data-show-faces="true">
+</div>
+</body>
+</html>

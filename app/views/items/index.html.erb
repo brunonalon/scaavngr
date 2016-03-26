@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Find Stuff :)</title>
+
+
+
+</head>
+<body style= "zoom: 1;" id="items" data-user-id="<%= current_user.id %>" >
+  <div class="container">
+    <h2 class="subtitle is-2"><i class="fa fa-search"></i> Find Items</h2>
+
+    <div class="columns">
+      <div class="column is-2">
+        <nav class="menu">
+          <p class="menu-heading">
+            <i class="fa fa-exchange"></i> My Items
+
+          </p>
+          <% user = current_user
+          user_items = user.items
+          user_items.each {|item| %>
+            <a class="menu-block" id="item-menu" data-item-desc = "<%= item.description%>" data-item-id = "<%= item.id%>" data-thumb-picture="<%=item.picture_url.thumb.url%>" data-item-name="<%=item.name%>" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src="<%=item.picture_url.mini.url %>" ></i></span><%= item.name%><%= link_to 'Delete', item_path(item), :method => :delete %></a>
+            <% } %>
+            <div class="menu-block">
+              <button class="button is-primary is-outlined is-fullwidth" id="button-add-item">
+                Add Item
+              </button>
+            </div>
+          </nav>
+        </div>
+        <div class="column is-auto" id="touchsurface2">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-64x64" id="smallItem">
+                <img id="itemImage2" src="<%= user_items.first.picture_url.thumb.url if user_items.first%>" alt="Image">
+              </figure>
+            </div>
+        </div>
+        <div class="range range-primary" style="margin-top: 20px">
+            <label for="slider">Distance  <i class="fa fa-map-marker fa-lg"></i></label>
+            <input id="slider" type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
+            <output id="rangePrimary">50</output>Km
+          </div>
+        <div class="notification is-primary" style="margin-top: 20px">
+          <h1 class="title is-2" id="itemTitle"> </h1>
+          <p id="itemDescription"> </p>
+
+          <p class="title" id="itemTitle">  </p>
+        </div>
+        <div class="card is-fullwidth" id="inner">
+          <div class="cardstatus">
+          </div>
+          <figure class="card-image is-4x3" id="bigItem">
+            <img id="itemImage"  >
+          </figure>
+          <div class="card-content">
+            <div class="content">
+              <div class="columns">
+                <div class="column is-half is-offset-quarter">
+                  <a id="like" class="button is-success is-large"><i class="fa fa-check"></i>LIKE</a>
+                  <a id="nope" class="button is-danger is-large"><i class="fa fa-times"></i>NOPE</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render 'form' %>
+    <%= render 'match_form' %>
+  </body>
+  </html>

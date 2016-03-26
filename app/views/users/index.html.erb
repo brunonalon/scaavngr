@@ -1,0 +1,41 @@
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>My Profile</title>
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $(".tab4").addClass('is-active');
+  });
+  </script>
+</head>
+
+<body style= "zoom: 1;" id="items" data-user-id="<%= @user.id %>" >
+  <div class="container">
+    <div class="columns">
+      <div class="column is-4">
+        <nav class="menu">
+          <p class="menu-heading">
+            My Items
+          </p>
+          <div class="menu-block">
+            <button class="button is-primary is-outlined is-fullwidth" id="button-add-item">
+              Edit Item
+            </button>
+          </div>
+          <% user = @user
+          user_items = @items
+          user_items.each {|item| %>
+            <a class="menu-block" id="item-menu" data-item-id = "<%= item.id%>" data-thumb-picture="<%=item.picture_url.thumb.url%>" data-item-name="<%=item.name%>" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src="<%=item.picture_url.mini.url %>" ></i></span><%= item.name%> </a>
+            <% } %>
+
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="column is-auto">
+
+    </div>
+    <%= render 'form' %>
+  </body>
