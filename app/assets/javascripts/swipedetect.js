@@ -54,7 +54,7 @@ var filter = function(){
     if (data.length == 0){
       $("#itemTitle").text("No more items around you...");
       $("#itemDescription").text("Hint: Add a new item to keep trading or change your distance.");
-      $('#itemImage').attr('src', 'images/Trjrhunt.jpg');
+      $('#itemImage').attr('src', 'images/swixch.jpg');
     }
     else {
       console.log("IMGCOUNTER VALUE: >>>>>>>>")
@@ -78,14 +78,15 @@ var filter = function(){
 $(document).ready(function() {
   item_offered_id = $(".menu-block").data('item-id');
   console.log(item_offered_id);
-  var small_pic = $(".menu-block").data('images/Trjrhunt.jpg');
-  $('#itemImage2').attr('src', 'images/Trjrhunt.jpg');
+  var small_pic = $(".menu-block").data('images/swixch.jpg');
+  $('#itemImage2').attr('src', 'images/swixch.jpg');
   var small_item_title = $(".menu-block").data('item-name');
   var small_item_desc = $(".menu-block").data('item-desc');
 
+
   $("#itemTitle").text("Ooops...");
   $("#itemDescription").text("Looks like you dont have any items selected. Add an item or select an existing item to play.");
-  $('#itemImage').attr('src', 'images/Trjrhunt.jpg');
+  $('#itemImage').attr('src', 'images/swixch.jpg');
   $('#match-offered-title').text(small_item_title);
   $('#match-offered-desc').text(small_item_desc);
 
