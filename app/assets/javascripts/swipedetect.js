@@ -78,8 +78,8 @@ var filter = function(){
 $(document).ready(function() {
   item_offered_id = $(".menu-block").data('item-id');
   console.log(item_offered_id);
-  var small_pic = $(".menu-block").data('images/swixch.jpg');
-  $('#itemImage2').attr('src', 'images/swixch.jpg');
+  var small_pic = $(".menu-block").data('images/swixch2.jpg');
+  $('#itemImage2').attr('src', 'images/swixch2.jpg');
   var small_item_title = $(".menu-block").data('item-name');
   var small_item_desc = $(".menu-block").data('item-desc');
 
