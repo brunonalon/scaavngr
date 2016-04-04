@@ -63,20 +63,21 @@
       <div class="modal-content">
         <div class="box">
           <article class="media">
-
+            <div class="media-left">
               <p> Welcome to Swixch, a friendly place to trade items you no longer need! Thank you for your support as we are still in Beta. New features are comming soon :)</p>
               <img src="/images/swixch2.jpg" alt="Image">
               <p>
               <figure class="image is-64x64">
                 <img src="/images/fb-art.jpg" alt="Image">
               </figure>
-
+              <div id="loginform">
+                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+              </p>
+            </div>
+            </div>
             <div class="media-content">
               <div class="content">
-                  <div id="loginform">
-                    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-                  </p>
-                </div>
+
                 <nav class="navbar">
 
                   <!-- <div class="navbar-left">
