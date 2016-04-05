@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   has_many :disliked_items, through: :dislikes, class_name: 'Item', source: :item
   has_many :conversations, :foreign_key => :sender_id  # has_many :sender, foreign_key: 'user_sender_id', :class_name => 'Message'
   # has_many :receiver, foreign_key: 'user_receiver_id', :class_name => 'Message'
-  geocoded_by :ip_address   # can also be an IP address
-  after_validation :geocode
+  reverse_geocoded_by :latitude, :longitude   # can also be an IP address
+  after_validation :reverse_geocode
 
   def self.from_omniauth(auth)
     where(uid: auth.uid).first_or_create do |user|

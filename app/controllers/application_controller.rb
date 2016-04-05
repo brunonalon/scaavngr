@@ -45,17 +45,17 @@ class ApplicationController < ActionController::Base
   def ip_address
     "156.74.181.208"
   end
-  def location
-    if params[:location].blank?
-      if Rails.env.production? || Rails.env.development?
-        @location ||= Geocoder.search("156.74.181.208").first
-      else
-        @location ||= request.location
-      end
-    else
-      params[:location].each {|l| l = l.to_i } if params[:location].is_a? Array
-      @location ||= Geocoder.search(params[:location]).first
-      @location
-    end
-  end
+  # def location
+  #   if params[:location].blank?
+  #     if Rails.env.production? || Rails.env.development?
+  #       @location ||= Geocoder.search("156.74.181.208").first
+  #     else
+  #       @location ||= request.location
+  #     end
+  #   else
+  #     params[:location].each {|l| l = l.to_i } if params[:location].is_a? Array
+  #     @location ||= Geocoder.search(params[:location]).first
+  #     @location
+  #   end
+  # end
 end

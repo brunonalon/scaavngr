@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.from_omniauth(request.env["omniauth.auth"])
+    @user.latitude = 1
+    @user.longitude = 2
     session[:user_id] = user.id
     if @user.save
       # Handle a successful save.
